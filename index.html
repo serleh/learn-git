@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>todo</title>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<p>Hello</p>
+
+<div id="app">
+    <header>
+        <h1 v-text="sitename"></h1>
+    </header>
+    <main>
+        <figure>
+            <img v-bind:src="product.image" alt="">
+        </figure>
+        <h2 v-text = "product.title"></h2>
+        <p v-html="product.description"></p>
+        <p> Price:{{product.price}}</p>
+        <button v-on:click = "addToCart"> Add to cart</button>
+    </main>
+</div>
+
+
+<script>
+  var webStore =  new Vue({
+        el:"#app",
+        data:{
+            sitename : "vue js pet Depot",
+            product:{
+                id:1111,
+                title:"the big bad wolf",
+                description:"A bad wolf <b>ferious</b>," + "at the pupils disturbing him.",
+                price:200,
+                image:"sa.jpg"
+            },
+            cart:[]
+          
+        },
+        methods:{
+            addToCart:function(){
+                this.cart.push(this.product.id);
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
